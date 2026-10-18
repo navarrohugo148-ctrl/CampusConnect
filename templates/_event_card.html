@@ -1,0 +1,7 @@
+<article class="card event-card">
+  <div class="card-top"><span class="event-emoji" aria-hidden="true">{{ event.club_icon if event.club_icon is defined else '📅' }}</span><span class="pill {% if event.is_cancelled or event.start_at < now_iso %}pill-muted{% endif %}">{{ 'Cancelled' if event.is_cancelled else 'Past' if event.start_at < now_iso else 'Upcoming' }}</span></div>
+  <p class="eyebrow">{{ event.club_name if event.club_name is defined else '' }}</p>
+  <h3><a class="stretched-link" href="{{ url_for('event_detail', event_id=event.id) }}">{{ event.title }}</a></h3>
+  <p class="card-description">{{ event.description | truncate(125) }}</p>
+  <div class="event-meta"><span>📅 {{ event.start_at | pretty_date }}</span><span>📍 {{ event.location }}</span><span>👥 {{ event.registered_count if event.registered_count is defined else '—' }} / {{ event.capacity }} registered</span></div>
+</article>

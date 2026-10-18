@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Seahawks Connect: explore student clubs, discover activities, and make connections on campus.">
+  <title>{% block title %}Home{% endblock %} · Seahawks Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="Seahawks Connect home"><span class="brand-mark">S<span>•</span></span> <span class="brand-wordmark">Seahawks <span class="brand-accent">Connect</span></span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="{{ url_for('clubs') }}" {% if request.endpoint in ['clubs','club_detail'] %}aria-current="page"{% endif %}>Explore clubs</a>
+          <a href="{{ url_for('events') }}" {% if request.endpoint in ['events','event_detail'] %}aria-current="page"{% endif %}>Events</a>
+          {% if current_user %}
+            <a href="{{ url_for('dashboard') }}" {% if request.endpoint == 'dashboard' %}aria-current="page"{% endif %}>My dashboard</a>
+            <form action="{{ url_for('logout') }}" method="post" class="nav-logout"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="btn btn-ghost btn-sm" type="submit">Log out</button></form>
+          {% else %}
+            <a href="{{ url_for('login') }}">Log in</a>
+            <a class="btn btn-primary btn-sm" href="{{ url_for('register') }}">Join Seahawks Connect</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <div class="container flashes" aria-live="polite">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}" role="status">{{ message }}</div>
+          {% endfor %}
+        {% endwith %}
+      </div>
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer"><div class="container footer-inner"><span class="brand footer-brand">S<span class="brand-accent">•</span> Seahawks Connect</span><span>Built for a more connected campus · {{ current_year }}</span><span>ISM4113 Systems Design Project</span></div></footer>
+  </div>
+</body>
+</html>

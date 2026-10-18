@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block title %}Events{% endblock %}{% block content %}
+<section class="page-intro"><div class="container"><p class="eyebrow">YOUR CAMPUS CALENDAR</p><h1>Discover upcoming activities</h1><p>Workshops, meetups, leadership opportunities, and more. Pick something that interests you.</p></div></section><section class="section page-section"><div class="container"><div class="card-grid">{% for event in events %}{% include '_event_card.html' %}{% else %}<p>No events are available yet.</p>{% endfor %}</div></div></section>
+{% endblock %}
