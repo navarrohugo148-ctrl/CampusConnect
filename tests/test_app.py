@@ -1,4 +1,3 @@
-"""Integration tests for CampusConnect. Run: python -m unittest discover -s tests -v"""
 
 import os
 import tempfile
