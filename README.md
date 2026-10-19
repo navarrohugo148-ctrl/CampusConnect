@@ -13,9 +13,7 @@ CampusConnect is a responsive web application where students discover university
 
 - The **student** account can join clubs and register for events.
 - The **leader** account manages the Business Club and Student Government Association. Log in with it to access **Create event**, **Edit event**, **Cancel event**, and **View attendance** features.
-- You can also register a brand-new student account.
-
-**Local reset:** stop the app, delete `instance/campusconnect.sqlite3`, and run `app.py` again to regenerate sample data. This deletes any real entries you made locally. Do not commit the database to GitHub.
+- also register a brand-new student account.
 
 ## Main functions
 
