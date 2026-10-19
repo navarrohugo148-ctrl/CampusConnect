@@ -89,29 +89,3 @@ The SQLite schema contains six normalized tables:
 
 Read [`docs/DATABASE_DESIGN.md`](docs/DATABASE_DESIGN.md) for the ER diagram, data dictionary, relationships, and normalization rationale. See [`docs/DATA_FLOW.md`](docs/DATA_FLOW.md) for the Level 0 DFD.
 
-## How to demonstrate for grading
-
-1. Open **Explore clubs**, use the search input, enter Business Club, and join or leave.
-2. Open **Events** and register for an activity. Check the **My dashboard** page; reload to show registration persisted.
-3. Log out, log in as **club leader**, open Business Club, and create an event.
-4. Open the event's **View attendance** page, and if a student is registered, select **Mark attended**.
-5. Explain how `registrations.event_id`, `registrations.user_id`, and the `UNIQUE(event_id, user_id)` constraint work together to protect data integrity.
-6. Include actual screenshots of the **Create event** form and attendance page in the PDF report.
-
-To run automated tests after Flask is installed:
-
-```bat
-.venv\Scripts\python.exe -m unittest discover -s tests -v
-```
-
-## GitHub submission
-
-From the project folder, initialize a repository or create a blank GitHub repository and upload the contents. Use GitHub's website or Git from the command line. Confirm that `README.md`, the `docs/` folder, `app.py`, `templates/`, and `static/` are present. The `instance/` database and `.venv/` are intentionally ignored.
-
-If the GitHub repository is **private**, grant your professor's GitHub account `jdanieln` access **before the deadline** (as instructed in the assignment). Verify the username from the assignment yourself before inviting.
-
-## Security and limitations
-
-This is for local development and class demonstration. Do **not** publish it as a public service without more work (strong session secret stored in an environment variable, HTTPS, server deployment controls, password-reset flow, account verification, rate limiting, database backups, and a process for approving club leaders). The default secret and the shared sample password are only for local coursework. All database queries use parameter binding, authorization is checked server-side, and forms include CSRF tokens.
-
-For local use, `python app.py` starts the Flask development server in debug mode; never expose that server to the internet.
