@@ -4,34 +4,6 @@
 
 CampusConnect is a responsive web application where students discover university clubs, join communities, register for events, and review their activities. Assigned club leaders can create, edit, cancel events, and record attendance. The application uses **Flask, SQLite, HTML, CSS, and JavaScript**.
 
-> This project is an educational local prototype, not a production university platform. The clubs, events, and users initially shown are **fictional sample records**.
-
-## Quick start (Windows 11)
-
-1. Install [Python 3](https://www.python.org/downloads/) (check **Add Python to PATH** during setup).
-2. Download or clone this repository. Open the **CampusConnect** folder in File Explorer, click the address bar, type `cmd` and press Enter. A Command Prompt opens in the project folder.
-3. Create a virtual environment:
-
-   ```bat
-   py -m venv .venv
-   ```
-
-4. Install dependencies:
-
-   ```bat
-   .venv\Scripts\python.exe -m pip install -r requirements.txt
-   ```
-
-5. Start the system:
-
-   ```bat
-   .venv\Scripts\python.exe app.py
-   ```
-
-6. Visit **http://127.0.0.1:5000** in your browser.
-
-**First launch:** the system automatically creates `instance/campusconnect.sqlite3` and loads sample clubs, events, and demo accounts.
-
 ### Demo sign-ins
 
 | User type | Email | Password |
